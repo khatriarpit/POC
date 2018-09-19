@@ -1,0 +1,110 @@
+CustId   DncPhonList             InvalidPhonelist    cust_svcg_cntxt_id
+1212      12124,1215              1121,112122           1/2
+
+Process
+-> Get all Record from DB or By CustId
+
+customerPhonenumber
+
+-DNC
+  DNCPhonList compare DBcolumn with phoneNumber
+  if found
+  - Blank
+  
+-Invlid
+
+if found
+update Invalid status 
+
+
+{
+	"businessPhoneNumbers": [
+	],
+	"customerPhoneNumbers": [{
+		"isPrimary": true,
+		"phoneType": "mobile",
+		"smsStatus": {
+			"status": "INVALID",
+			"reasons": [
+				"reasonCode": "INVALID",
+				"reasonDesc": "Phone number is marked as invalid by agent"
+			]
+		},
+		"phoneNumber": "1234567890",
+		"timeUpdated": "2012-01-21T12:11:11.158Z",
+		"voiceStatus": {
+			"status": "INVALID",
+			"reasons": [{
+				"reasonCode": "INVALID",
+				"reasonDesc": "Phone number is marked as invalid by agent"
+			}]
+		},
+		"hasTcpaCnsnt": true
+	}]
+}
+
+
+{
+	"businessPhoneNumbers": [
+	],
+	"customerPhoneNumbers": [{
+	}]
+}
+
+
+
+CustomerDetails.Java
+
+List<BusinessPhoneNumber> list
+List<customerPhoneNumber> list
+
+CustomerPhonenumber.java
+
+	isPrimary
+	phoneType
+	phoneNumber
+	timeUpdated
+	hasTcpaCnsnt
+	smsStatus
+	voiceStatus
+
+
+{
+	"businessPhoneNumbers": [
+	],
+	"customerPhoneNumbers": [{
+		"isPrimary": true,
+		"phoneType": "mobile",
+		"phoneNumber": "1234567890",
+		"timeUpdated": "2012-01-21T12:11:11.158Z",
+		"hasTcpaCnsnt": true
+	},
+	{
+	"isPrimary": true,
+    		"phoneType": "mobile",
+    		"phoneNumber": "1245",
+    		"timeUpdated": "2012-01-21T12:11:11.158Z",
+    		"hasTcpaCnsnt": true
+
+	}]
+}
+
+insert into springbatch.test (customerjson) values('{
+	"businessPhoneNumbers": [
+	],
+	"customerPhoneNumbers": [{
+		"isPrimary": true,
+		"phoneType": "mobile",
+		"phoneNumber": "7600395920",
+		"timeUpdated": "2012-01-21T12:11:11.158Z",
+		"hasTcpaCnsnt": true
+	},
+	{
+	"isPrimary": true,
+    		"phoneType": "mobile",
+    		"phoneNumber": "8511168932",
+    		"timeUpdated": "2012-01-21T12:11:11.158Z",
+    		"hasTcpaCnsnt": true
+
+	}]
+}')
